@@ -97,8 +97,8 @@
                                 </div>
                                 <div class="col-md-4 mx-auto">
                                     <div class="input-group input-group-static my-3">
-                                        <label>Student No.</label>
-                                        <select class="form-control" id="level" name="level"
+                                        <label>Gender</label>
+                                        <select class="form-control" id="gender" name="gender"
                                             placeholder="Year/Grade Level">
                                             <option selected disabled>Select Gender</option>
                                             <?php
@@ -1240,90 +1240,62 @@
                             </div>
                             <h3 class="text-center my-3">Testing and Student Evaluation</h3>
                             <h5 class="text-center my-3">(to be filled up by a psychometrician)</h5>
-                            <div class="row mx-auto justify-content-center">
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-static my-1">
-                                        <label>Date of Assessment</label>
-                                        <input type="text" name="org1" class="form-control" autocomplete="off" required
-                                            value="<?php echo $row['org1']; ?>" placeholder="Enter Date">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-static my-1">
-                                        <label>Nature of Exam</label>
-                                        <input type="text" name="org1_serv" class="form-control" autocomplete="off"
-                                            required value="<?php echo $row['org1_serv']; ?>"
-                                            placeholder="Nature of Exam">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-static my-1">
-                                        <label>Name of Test</label>
-                                        <input type="text" name="org1_date" class="form-control" autocomplete="off"
-                                            required value="<?php echo $row['org1_date']; ?>"
-                                            placeholder="Name of Test">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-static my-1">
-                                        <label>Key Result</label>
-                                        <input type="text" name="org1_date" class="form-control" autocomplete="off"
-                                            required value="<?php echo $row['org1_date']; ?>"
-                                            placeholder="Enter Result">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="input-group input-group-static my-1">
-                                        <label>Description</label>
-                                        <input type="text" name="org1_date" class="form-control" autocomplete="off"
-                                            required value="<?php echo $row['org1_date']; ?>"
-                                            placeholder="Enter Description">
-                                    </div>
-                                </div>
+                            <div class="table-responsive p-0 mx-3">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr class="light">
+                                            <th>Date of Assessment</th>
+                                            <th>Nature of Exam</th>
+                                            <th>Name of Test</th>
+                                            <th>Key Result</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $get_eval = mysqli_query($conn, "SELECT * FROM tbl_evaluation WHERE stud_id = '$_GET[stud_id]' ");
+                                        while ($row = mysqli_fetch_array($get_eval)) {
+                                            $id = $row['stud_id'];
+                                        ?>
+                                        <tr>
+
+                                            <td><?php echo $row['date'] ?></td>
+                                            <td><?php echo $row['exam'] ?></td>
+                                            <td><?php echo $row['test'] ?></td>
+                                            <td><?php echo $row['result'] ?></td>
+                                            <td><?php echo $row['description'] ?></td>
+
+                                        </tr>
+                                        <?php  } ?>
+                                    </tbody>
+                                </table>
                             </div>
 
                             <h3 class="text-center my-3">Significant Notes</h3>
                             <h5 class="text-center my-3">(to be filled up by the school counselor)</h5>
-                            <div class="row mx-auto justify-content-center">
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-static my-1">
-                                        <label>Date of Assessment</label>
-                                        <input type="text" name="org1" class="form-control" autocomplete="off" required
-                                            value="<?php echo $row['org1']; ?>" placeholder="Enter Date">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-static my-1">
-                                        <label>Nature of Exam</label>
-                                        <input type="text" name="org1_serv" class="form-control" autocomplete="off"
-                                            required value="<?php echo $row['org1_serv']; ?>"
-                                            placeholder="Nature of Exam">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-static my-1">
-                                        <label>Name of Test</label>
-                                        <input type="text" name="org1_date" class="form-control" autocomplete="off"
-                                            required value="<?php echo $row['org1_date']; ?>"
-                                            placeholder="Name of Test">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-static my-1">
-                                        <label>Key Result</label>
-                                        <input type="text" name="org1_date" class="form-control" autocomplete="off"
-                                            required value="<?php echo $row['org1_date']; ?>"
-                                            placeholder="Enter Result">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="input-group input-group-static my-1">
-                                        <label>Description</label>
-                                        <input type="text" name="org1_date" class="form-control" autocomplete="off"
-                                            required value="<?php echo $row['org1_date']; ?>"
-                                            placeholder="Enter Description">
-                                    </div>
-                                </div>
+                            <div class="table-responsive p-0 mx-3">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr class="light">
+                                            <th>Date</th>
+                                            <th>Incident</th>
+                                            <th>Remarks</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $get_notes = mysqli_query($conn, "SELECT * FROM tbl_notes WHERE stud_id = '$_GET[stud_id]' ");
+                                        while ($row = mysqli_fetch_array($get_notes)) {
+                                            $id = $row['stud_id'];
+                                        ?>
+                                        <tr>
+
+                                            <td><?php echo $row['date'] ?></td>
+                                            <td><?php echo $row['incident'] ?></td>
+                                            <td><?php echo $row['remarks'] ?></td>
+
+                                        </tr>
+                                        <?php  } ?>
+                                    </tbody>
+                                </table>
                             </div>
 
 
